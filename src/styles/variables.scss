@@ -1,0 +1,33 @@
+@use "sass:map";
+/* Color Palette */
+
+/* Primary */
+$primary-gray: #252830;
+$light-primary: #ababab;
+
+/* Secondary */
+$secondary: #7fc241;
+$light-secondary: #9ef152;
+
+// Complementary
+$comp-1: #de2248;
+$light-comp-1: #ff748d;
+
+// Base
+$base-1: #fff;
+$base-2: #fbfbfb;
+$base-3: #e6e6e6;
+$base-4: #656565;
+$base-5: #3a3a3a;
+
+// Vars Bootstrap
+
+// Array de cores
+$theme-colors: (
+  "primary-gray": $primary-gray,
+  "light-primary": $light-primary,
+
+  "secondary": $secondary,
+  "light-0": $base-1,
+  "light-2": $base-3,
+);

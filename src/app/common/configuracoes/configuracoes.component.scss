@@ -1,0 +1,12 @@
+@use "styles/variables" as vars;
+@use "styles/mixins" as *;
+
+#top-settings {
+  background-color: vars.$primary-gray;
+
+  // Modo claro:
+  &.white-mode {
+    background-color: white;
+    border: 1px solid rgb(207, 206, 206);
+  }
+}

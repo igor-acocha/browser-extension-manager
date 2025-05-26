@@ -1,0 +1,50 @@
+@use "styles/variables" as vars;
+@use "styles/mixins" as *;
+
+.form-check-input:focus {
+  box-shadow: none;
+  border-color: #f35c55;
+}
+
+/* Estado desligado */
+.form-check-input {
+  background-color: gray;
+  border-color: gray;
+}
+
+/* Estado ligado */
+.form-check-input:checked {
+  background-color: #f35c55;
+  border-color: #f35c55;
+}
+
+/* Bolinha branca no estado ligado */
+.form-check-input:checked.form-switch::after {
+  background-color: white;
+}
+
+#card-extension {
+  height: 180px;
+  background-color: vars.$primary-gray;
+
+  // Modo claro:
+  &.white-mode {
+    background-color: white;
+    border: 1px solid rgb(207, 206, 206);
+  }
+}
+
+#content-extension {
+  height: 120px;
+  color: vars.$light-primary;
+
+  &.white-mode {
+    color: rgb(46, 46, 46);
+  }
+}
+
+.btn-remove:hover {
+  background-color: #f35c55;
+  border-color: #f35c55;
+  color: white;
+}

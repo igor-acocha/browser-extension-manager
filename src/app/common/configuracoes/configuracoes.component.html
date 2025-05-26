@@ -1,0 +1,91 @@
+<div class="container mt-5">
+  <div
+    class="hstack gap-2 p-2 rounded-4"
+    id="top-settings"
+    [ngClass]="{ 'white-mode': isWhiteMode, 'border border-secondary': !isWhiteMode}
+    "
+  >
+    <img
+      src="assets/images/logo-white.svg"
+      *ngIf="!isWhiteMode"
+      alt=""
+      class="p-2"
+    />
+    <img src="assets/images/logo.svg" *ngIf="isWhiteMode" alt="" class="p-2" />
+
+    <img
+      [src]="
+        isWhiteMode
+          ? 'assets/images/icon-moon.svg'
+          : 'assets/images/icon-sun.svg'
+      "
+      alt=""
+      class="ms-auto p-2"
+      (click)="toggleTheme()"
+    />
+  </div>
+
+  <div class="d-flex hstack py-4 mt-4">
+    <h2
+      class="fw-bold"
+      [class.text-light]="!isWhiteMode"
+      [class.text-dark]="isWhiteMode"
+    >
+      Extensions List
+    </h2>
+    <div class="d-flex ms-auto">
+      <button
+        class="btn btn-secondary rounded-5 px-3 mx-2 fw-semibold"
+        [ngClass]="{
+        'btn-danger': activeFilter === 'all',
+        'btn-light': activeFilter !== 'all' && isWhiteMode,
+      }"
+        [class.text-dark]="isWhiteMode"
+        (click)="setFilter('all')"
+      >
+        All
+      </button>
+
+      <button
+        class="btn btn-secondary rounded-5 px-3 mx-2 fw-semibold"
+        [ngClass]="{
+        'btn-danger': activeFilter === 'active',
+        'btn-light': activeFilter !== 'active' && isWhiteMode,
+      }"
+        [class.text-dark]="isWhiteMode"
+        (click)="setFilter('active')"
+      >
+        Active
+      </button>
+
+      <button
+        class="btn btn-secondary rounded-5 px-3 mx-2 fw-semibold"
+        [ngClass]="{
+        'btn-danger': activeFilter === 'inactive',
+        'btn-light': activeFilter !== 'inactive' && isWhiteMode,
+      }"
+        [class.text-dark]="isWhiteMode"
+        (click)="setFilter('inactive')"
+      >
+        Inactive
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div
+      class="col-12 col-md-6 col-lg-4 mb-4"
+      *ngFor="let extension of filteredExtensions"
+    >
+      <app-extension
+        [logo]="extension.logo"
+        [title]="extension.title"
+        [description]="extension.description"
+        [isActive]="extension.isActive"
+        [isWhiteMode]="isWhiteMode"
+        (remove)="removeExtension(extension)"
+        (toggle)="toggleExtensionStatus(extension, $event)"
+      >
+      </app-extension>
+    </div>
+  </div>
+</div>
